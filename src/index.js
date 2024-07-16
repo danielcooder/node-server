@@ -17,12 +17,23 @@ const professores = [
     { id: 6, nome: 'Paula', stack: 'Educação financeira' },
 
     { id: 7, nome: 'Ana Caetano', stack: 'Historia' }
-
+    
 ];
 
 //localhost:3000/professores/:id
 app.get('/professores', (req, res) => {
-    res.send(professores);
+    const { stack } = req.query;
+    let resultado = professores
+
+    if (stack) { 
+
+        resultado = professores.filter((professores) => {
+            return professores.stack === stack
+        });
+    }
+
+    res.send(resultado);
+
 });
 
 //localhost:3000/professores/3
