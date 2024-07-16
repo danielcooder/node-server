@@ -1,9 +1,3 @@
-const express = require('express');
-
-const { filtrarProfessores, encontrarUmProfessor } = require('./controladores/professores');
-
-const app = express();
-
 const professores = [
 
     { id: 1, nome: 'João Alberto', stack: 'Literatura'},
@@ -22,12 +16,4 @@ const professores = [
     
 ];
 
-
-//localhost:3000/professores/:id
-app.get('/professores', filtrarProfessores);
-
-//localhost:3000/professores/3
-app.get('/professores/:id', encontrarUmProfessor);
-
-
-app.listen(3000);
+module.exports = professores;
