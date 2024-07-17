@@ -5,7 +5,10 @@ const filtrarProfessores = (req, res) => {
     const { stack } = req.query;
     let resultado = professores
 
+    console.log('cheguei no controlador de listagem do professor');
+
     if (stack) { 
+        
         resultado = professores.filter((professores) => {
             return professores.stack === stack
         });

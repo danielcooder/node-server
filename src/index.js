@@ -4,27 +4,24 @@ const { filtrarProfessores, encontrarUmProfessor } = require('./controladores/pr
 
 const app = express();
 
-const professores = [
+const primeiroIntermediario = (req, res, next) => {
+console.log('Passei no primeiro intermediario');
 
-    { id: 1, nome: 'João Alberto', stack: 'Literatura'},
+next();
 
-    { id: 2, nome: 'Antônio Silva', stack: 'Artes'},
-
-    { id: 3, nome: 'Maria Oliveira', stack: 'Matematica'},
-
-    { id: 4, nome: 'Mauricio de Souza', stack: 'Biologia' },
-
-    { id: 5, nome: 'Sergiane', stack: 'Algebra' },
-
-    { id: 6, nome: 'Paula', stack: 'Educação financeira' },
-
-    { id: 7, nome: 'Ana Caetano', stack: 'Historia' }
+}
+   
+const segundoIntermediario = (req, res, next) => {
+        console.log('Passei no segundo intermediario');
     
-];
+        next();
+        }
 
-
-//localhost:3000/professores/:id
-app.get('/professores', filtrarProfessores);
+    app.use(primeiroIntermediario);
+    app.use(segundoIntermediario);
+ 
+ //localhost:3000/professores/:id
+  app.get('/professores', filtrarProfessores);
 
 //localhost:3000/professores/3
 app.get('/professores/:id', encontrarUmProfessor);
